@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Srivastava — AI Product Leader, Banking &amp; Data Transformation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0e17;
+    --ink-soft:#111a2b;
+    --ink-line: rgba(232,230,221,0.10);
+    --paper:#f2ecdd;
+    --paper-line:#c9bfa0;
+    --paper-text:#1b1f2a;
+    --gold:#c9a227;
+    --gold-soft:#e0c674;
+    --teal:#49c5b6;
+    --text:#e8e6dd;
+    --muted:#8b95ab;
+    --serif: 'Fraunces', serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(10,14,23,0.86); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--ink-line);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{font-family:var(--mono); font-size:13px; letter-spacing:0.08em; color:var(--gold-soft);}
+  .navlinks{display:flex; gap:28px; font-family:var(--mono); font-size:12.5px; letter-spacing:0.04em; color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  @media(max-width:720px){.navlinks{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 96px;
+    background:
+      linear-gradient(180deg, rgba(10,14,23,0) 0%, var(--ink) 92%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, var(--ink-line) 40px),
+      var(--ink);
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:22px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:20px; height:1px; background:var(--teal); display:inline-block;}
+  h1.display{
+    font-family:var(--serif); font-weight:500; letter-spacing:-0.01em;
+    font-size:clamp(34px, 5.6vw, 62px); line-height:1.06; max-width:900px; color:#fbf9f3;
+  }
+  h1.display em{font-style:italic; color:var(--gold-soft); font-weight:500;}
+  .hero-sub{
+    font-size:17px; color:var(--muted); max-width:600px; margin-top:26px; line-height:1.7;
+  }
+  .hero-cta{display:flex; gap:14px; margin-top:38px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.05em; padding:13px 22px;
+    border:1px solid var(--ink-line); border-radius:2px; transition:all .25s ease; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-solid{background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:500;}
+  .btn-solid:hover{background:var(--gold-soft); border-color:var(--gold-soft);}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+
+  /* ---------- pipeline diagram ---------- */
+  .pipeline{margin-top:76px;}
+  .pipeline-label{font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; margin-bottom:16px;}
+  .pipe-row{display:flex; align-items:stretch; overflow-x:auto; gap:0; padding-bottom:6px;}
+  .pipe-node{
+    flex:0 0 auto; min-width:150px; border:1px solid var(--ink-line); border-radius:3px;
+    padding:16px 14px; background:var(--ink-soft); position:relative;
+  }
+  .pipe-node .n{font-family:var(--mono); font-size:10.5px; color:var(--gold-soft); margin-bottom:8px; display:block;}
+  .pipe-node .t{font-size:13.5px; color:var(--text); line-height:1.35;}
+  .pipe-arrow{flex:0 0 auto; width:34px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:var(--mono);}
+
+  /* ---------- section headers ---------- */
+  .section{padding:100px 0;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:48px; flex-wrap:wrap; gap:12px;}
+  .section-num{font-family:var(--mono); font-size:12px; color:var(--muted);}
+  h2.title{font-family:var(--serif); font-weight:500; font-size:clamp(26px,3.4vw,38px); color:#fbf9f3;}
+  .ledger .title, .ledger h2.title{color:var(--paper-text);}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px;}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+  .about-copy p{font-size:16.5px; color:#d7d4c9; margin-bottom:20px; max-width:52ch;}
+  .about-copy strong{color:var(--gold-soft); font-weight:500;}
+  .about-list{list-style:none; margin-top:8px;}
+  .about-list li{
+    font-size:14.5px; color:var(--muted); padding:12px 0; border-top:1px solid var(--ink-line);
+    display:flex; gap:14px;
+  }
+  .about-list li:last-child{border-bottom:1px solid var(--ink-line);}
+  .about-list li span.k{font-family:var(--mono); color:var(--teal); font-size:12px; flex:0 0 78px; padding-top:2px;}
+
+  .stat-ledger{border-top:1px solid var(--ink-line);}
+  .stat-row{display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid var(--ink-line);}
+  .stat-row .figure{font-family:var(--serif); font-size:24px; color:var(--gold-soft); font-weight:500;}
+  .stat-row .desc{font-size:13px; color:var(--muted); text-align:right; max-width:60%;}
+
+  /* ---------- experience ledger ---------- */
+  .ledger{
+    background:var(--paper); color:var(--paper-text);
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 46px;
+    position:relative;
+  }
+  .ledger::before, .ledger::after{
+    content:''; position:absolute; left:0; right:0; height:36px;
+    background:linear-gradient(180deg, var(--ink), transparent);
+  }
+  .ledger::before{top:0;}
+  .ledger::after{bottom:0; transform:rotate(180deg); background:linear-gradient(180deg, var(--ink), transparent);}
+  .stamp{
+    position:absolute; top:64px; right:32px; width:96px; height:96px; border-radius:50%;
+    border:1.5px solid rgba(27,31,42,0.35); display:flex; align-items:center; justify-content:center;
+    transform:rotate(-12deg); font-family:var(--mono); font-size:9.5px; letter-spacing:0.06em;
+    text-align:center; color:rgba(27,31,42,0.45); line-height:1.5; padding:8px;
+  }
+  @media(max-width:640px){.stamp{display:none;}}
+
+  .role{border-bottom:1px solid var(--paper-line); padding:30px 0;}
+  .role:first-of-type{border-top:1px solid var(--paper-line);}
+  .role-head{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:14px;}
+  .role-titles h3{font-family:var(--serif); font-size:21px; font-weight:600;}
+  .role-titles .co{font-size:14px; color:#5b5340; margin-top:2px;}
+  .role-date{font-family:var(--mono); font-size:12.5px; color:#5b5340; white-space:nowrap; padding-top:4px;}
+  .role ul{list-style:none; margin-top:6px;}
+  .role li{font-size:14.5px; padding:6px 0 6px 20px; position:relative; max-width:78ch; color:#2c2a22;}
+  .role li::before{content:'—'; position:absolute; left:0; color:#a89968;}
+  .role-earlier{display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid var(--paper-line); flex-wrap:wrap; font-size:14.5px;}
+  .role-earlier:last-child{border-bottom:none;}
+  .role-earlier .co{font-weight:600;}
+  .role-earlier .date{font-family:var(--mono); font-size:12px; color:#5b5340;}
+  .role-earlier .what{color:#4b4736; flex:1 1 260px;}
+
+  /* ---------- featured work ---------- */
+  .case{
+    border:1px solid var(--ink-line); border-radius:4px; padding:44px; background:var(--ink-soft);
+  }
+  @media(max-width:640px){.case{padding:26px;}}
+  .case-top{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:22px;}
+  .case h3{font-family:var(--serif); font-size:clamp(22px,3vw,30px); font-weight:500; color:#fbf9f3; max-width:20ch;}
+  .case-tag{font-family:var(--mono); font-size:11px; color:var(--ink); background:var(--teal); padding:5px 10px; border-radius:2px; height:fit-content; letter-spacing:0.04em;}
+  .case-body{font-size:15.5px; color:#c9c6ba; max-width:74ch; margin-bottom:30px;}
+  .case-body strong{color:var(--text); font-weight:500;}
+  .stack-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:22px;}
+  .stack-chip{font-family:var(--mono); font-size:11.5px; color:var(--muted); border:1px solid var(--ink-line); padding:5px 11px; border-radius:20px;}
+
+  /* ---------- projects ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--ink-line); border:1px solid var(--ink-line);}
+  @media(max-width:800px){.proj-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{background:var(--ink); padding:26px; transition:background .25s ease;}
+  .proj-card:hover{background:var(--ink-soft);}
+  .proj-card .lang{font-family:var(--mono); font-size:10.5px; color:var(--gold-soft); letter-spacing:0.06em;}
+  .proj-card h4{font-family:var(--serif); font-size:17px; margin:10px 0 8px; font-weight:500;}
+  .proj-card p{font-size:13px; color:var(--muted); line-height:1.55;}
+  .proj-card .go{font-family:var(--mono); font-size:11px; color:var(--teal); margin-top:14px; display:inline-block;}
+
+  /* ---------- writing ---------- */
+  .write-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:800px){.write-grid{grid-template-columns:1fr;}}
+  .write-card{border:1px solid var(--ink-line); padding:26px; border-radius:3px; transition:border-color .25s ease;}
+  .write-card:hover{border-color:var(--gold-soft);}
+  .write-card .tag{font-family:var(--mono); font-size:10.5px; color:var(--teal); text-transform:uppercase; letter-spacing:0.06em;}
+  .write-card p.line{font-family:var(--serif); font-size:16px; margin-top:14px; color:#fbf9f3; line-height:1.4;}
+  .write-card .go{font-family:var(--mono); font-size:11px; color:var(--gold-soft); margin-top:18px; display:inline-block;}
+
+  /* ---------- skills ---------- */
+  .skill-cols{display:grid; grid-template-columns:1fr 1fr 0.8fr; gap:48px;}
+  @media(max-width:900px){.skill-cols{grid-template-columns:1fr; gap:32px;}}
+  .skill-block h4{font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;}
+  .chip-cloud{display:flex; flex-wrap:wrap; gap:9px;}
+  .chip{font-size:13px; padding:8px 14px; border:1px solid var(--ink-line); border-radius:20px; color:#d7d4c9;}
+  .cert-list{list-style:none;}
+  .cert-list li{font-size:14px; padding:10px 0; border-top:1px solid var(--ink-line); color:#d7d4c9;}
+  .cert-list li:last-child{border-bottom:1px solid var(--ink-line);}
+
+  /* ---------- footer ---------- */
+  footer{padding:90px 0 60px; border-top:1px solid var(--ink-line); text-align:center;}
+  footer h2{font-family:var(--serif); font-size:clamp(28px,4vw,44px); font-weight:500; color:#fbf9f3; max-width:16ch; margin:0 auto 30px;}
+  .foot-links{display:flex; gap:26px; justify-content:center; flex-wrap:wrap; margin-top:36px; font-family:var(--mono); font-size:12.5px;}
+  .foot-links a{color:var(--muted); border-bottom:1px solid transparent; padding-bottom:2px;}
+  .foot-links a:hover{color:var(--gold-soft); border-color:var(--gold-soft);}
+  .foot-meta{margin-top:60px; font-family:var(--mono); font-size:11px; color:#525b6e;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">R. SRIVASTAVA — BANKING • PAYMENTS • AI</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Featured Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Bengaluru · AI Product Leader, Banking &amp; Data Transformation</div>
+    <h1 class="display">Eighteen years turning banking complexity into <em>AI-native products.</em></h1>
+    <p class="hero-sub">I run the full arc — discovery, prototyping, agentic build, delivery, and the team underneath it — across core banking, payments, and capital markets. Most recently: designing and shipping an agentic system that turns raw source schemas into deployable data products.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#work">View Featured Work →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/ravi-srivastava0114" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/rsri24" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="pipeline reveal">
+      <div class="pipeline-label">Latest build — the Data Product Factory, end to end</div>
+      <div class="pipe-row">
+        <div class="pipe-node"><span class="n">01</span><span class="t">Source&nbsp;schemas</span></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node"><span class="n">02</span><span class="t">Metadata catalog</span></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node"><span class="n">03</span><span class="t">Semantic knowledge graph</span></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node"><span class="n">04</span><span class="t">Domain model</span></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node"><span class="n">05</span><span class="t">ODP / FDP design</span></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node"><span class="n">06</span><span class="t">Deployable artifacts<br><span style="color:var(--muted); font-size:11px;">PostgreSQL · Neo4j</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="title">About</h2>
+      <span class="section-num">§ 01</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I've spent my career at the point where banking data breaks — legacy core systems, payment rails mid-migration, risk feeds no one fully trusts. <strong>Publicis Sapient</strong> has been home since 2016, leading product for global banking clients through core banking migrations, ISO20022 payments modernization, and real-time data platforms.</p>
+        <p>In the last two years that's shifted from writing roadmaps about AI to building with it. I design and ship agentic systems myself — not just specify them for engineering — because the fastest way to know what an AI-native data platform should do is to build one and watch where it strains.</p>
+        <p>I'm looking to take on a bigger leadership charter next — <strong>owning AI product strategy end to end</strong>, prototyping it hands-on, and building the team that scales it.</p>
+        <ul class="about-list">
+          <li><span class="k">Domain</span> Core banking, payments, capital markets, regulatory data</li>
+          <li><span class="k">Now</span> Agentic AI product design — discovery to deployable artifact</li>
+          <li><span class="k">Stack</span> GCP, Kafka, Gemini-based LLMs, Neo4j, PostgreSQL, Slingshot, Bodhi Studio</li>
+          <li><span class="k">Method</span> SAFe Agile, value-pool &amp; value-proposition led roadmapping</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="stat-ledger">
+          <div class="stat-row"><span class="figure">18+ yrs</span><span class="desc">banking, data &amp; payments transformation</span></div>
+          <div class="stat-row"><span class="figure">75%</span><span class="desc">cut in feed-analysis timelines via AI-driven review (12 mo → 3 mo)</span></div>
+          <div class="stat-row"><span class="figure">40%</span><span class="desc">improvement in data consistency, Group Core Banking Data Model</span></div>
+          <div class="stat-row"><span class="figure">30%</span><span class="desc">lower transaction cost from New Payment Architecture (ISO20022)</span></div>
+          <div class="stat-row"><span class="figure">50%</span><span class="desc">faster payment processing after NPA implementation</span></div>
+          <div class="stat-row"><span class="figure">$2M</span><span class="desc">annual savings from enterprise cloud migration</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="ledger" id="experience">
+  <div class="wrap section" style="position:relative;">
+    <div class="stamp reveal">AI-NATIVE<br>PRODUCT<br>LEADER</div>
+    <div class="section-head reveal">
+      <h2 class="title">Experience</h2>
+      <span class="section-num" style="color:#5b5340;">§ 02</span>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-head">
+        <div class="role-titles">
+          <h3>Senior Product Manager</h3>
+          <div class="co">Publicis Sapient — India, UK</div>
+        </div>
+        <div class="role-date">Sep 2016 — Present</div>
+      </div>
+      <ul>
+        <li>Drove enterprise-wide adoption of AI/LLMs for documentation and COBOL feed analysis, cutting project timelines from 12 months to 3.</li>
+        <li>Delivered an AI-led director credit scoring platform for a UK bank — automated ingestion, enrichment, and delivery of credit data into risk decisioning models, with product governance across quality, compliance, and PII.</li>
+        <li>Led development of a unified Core Banking Data Model, standardizing data architecture across global entities.</li>
+        <li>Implemented New Payment Architecture (NPA), replacing legacy rails with ISO20022-compliant schemes and building the System of Engagement / System of Intelligence layers.</li>
+        <li>Defined a Kafka-based real-time event architecture powering financial and non-financial data replication.</li>
+        <li>Managed HSBC's Rates business migration to SUMMIT and led functional design for a UK retail bank's core migration to Thought Machine Vault.</li>
+      </ul>
+    </div>
+
+    <div class="reveal" style="margin-top:8px;">
+      <div class="role-earlier">
+        <span class="co">Capco Technologies</span>
+        <span class="what">Senior Consultant — authored functional specs for the Target2 Securities settlement engine</span>
+        <span class="date">Jun 2015 – Sep 2016</span>
+      </div>
+      <div class="role-earlier">
+        <span class="co">Société Générale</span>
+        <span class="what">Senior Associate Consultant — functional &amp; technical lead, market data management, India / France</span>
+        <span class="date">Oct 2008 – Jun 2015</span>
+      </div>
+      <div class="role-earlier">
+        <span class="co">Wipro Technologies</span>
+        <span class="what">Business Analyst — OTC credit derivatives confirmation systems</span>
+        <span class="date">Mar 2006 – Sep 2008</span>
+      </div>
+      <div class="role-earlier">
+        <span class="co">Syntel Limited</span>
+        <span class="what">Analyst Programmer — OTC credit derivatives confirmation enhancements</span>
+        <span class="date">Feb 2005 – Mar 2006</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORK -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="title">Featured Work</h2>
+      <span class="section-num">§ 03</span>
+    </div>
+    <div class="case reveal">
+      <div class="case-top">
+        <h3>The Data Product Factory</h3>
+        <span class="case-tag">AGENTIC AI · BUILT SOLO</span>
+      </div>
+      <p class="case-body">An agentic workflow that automates the journey from raw source-system schemas to business-ready data products. It generates <strong>metadata catalogs</strong>, <strong>semantic knowledge graphs</strong>, and <strong>domain models</strong>, then produces <strong>ODP / FDP designs</strong> and deployable <strong>PostgreSQL and Neo4j</strong> artifacts — collapsing what used to be a manual, multi-week data-modeling exercise into an orchestrated agent pipeline. Designed with dedicated <strong>evaluation subflows</strong> and <strong>guardrails</strong> alongside the main pipeline, ensuring output quality and safety at every stage — this is the kind of AI-native data modernization tooling I want to bring into a larger platform team.</p>
+      <div class="stack-row">
+        <span class="stack-chip">Slingshot</span>
+        <span class="stack-chip">Bodhi Studio</span>
+        <span class="stack-chip">Claude</span>
+        <span class="stack-chip">LangGraph</span>
+        <span class="stack-chip">Agentic workflow design</span>
+        <span class="stack-chip">Eval subflows &amp; guardrails</span>
+        <span class="stack-chip">PostgreSQL</span>
+        <span class="stack-chip">Neo4j</span>
+        <span class="stack-chip">Semantic knowledge graphs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="title">GitHub Explorations</h2>
+      <span class="section-num">§ 04</span>
+    </div>
+    <p class="reveal" style="color:var(--muted); font-size:14.5px; max-width:60ch; margin-bottom:36px;">Smaller builds where I'm getting hands dirty with agentic systems, LLM tooling, and data patterns — code at <a href="https://github.com/rsri24" target="_blank" rel="noopener" style="color:var(--teal); border-bottom:1px solid var(--teal);">github.com/rsri24</a>.</p>
+    <div class="proj-grid reveal">
+      <a class="proj-card" href="https://github.com/rsri24/FX-Trade-Life-cycle" target="_blank" rel="noopener">
+        <span class="lang">HTML</span>
+        <h4>FX Trade Life Cycle</h4>
+        <p>A working model of the end-to-end FX trade lifecycle, from execution through settlement.</p>
+        <span class="go">View repo →</span>
+      </a>
+      <a class="proj-card" href="https://github.com/rsri24/datavault-demo" target="_blank" rel="noopener">
+        <span class="lang">HTML</span>
+        <h4>Data Vault Demo</h4>
+        <p>A demonstration of Data Vault modeling patterns applied to core banking data.</p>
+        <span class="go">View repo →</span>
+      </a>
+      <a class="proj-card" href="https://github.com/rsri24/QuestionGenerator" target="_blank" rel="noopener">
+        <span class="lang">HTML</span>
+        <h4>Question Generator</h4>
+        <p>An AI-assisted tool for generating structured questions from source content.</p>
+        <span class="go">View repo →</span>
+      </a>
+      <a class="proj-card" href="https://github.com/rsri24/AIHallucinationDetector" target="_blank" rel="noopener">
+        <span class="lang">Python</span>
+        <h4>AI Hallucination Detector</h4>
+        <p>Exploring detection methods for hallucinated output in LLM responses.</p>
+        <span class="go">View repo →</span>
+      </a>
+      <a class="proj-card" href="https://github.com/rsri24/SecureLens" target="_blank" rel="noopener">
+        <span class="lang">JavaScript</span>
+        <h4>SecureLens</h4>
+        <p>A security-focused analysis tool built to inspect and surface risk signals.</p>
+        <span class="go">View repo →</span>
+      </a>
+      <a class="proj-card" href="https://github.com/rsri24/KannadaFriend" target="_blank" rel="noopener">
+        <span class="lang">TypeScript</span>
+        <h4>Kannada Friend</h4>
+        <p>A conversational assistant for learning Kannada, built and deployed on Replit.</p>
+        <span class="go">View repo →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section class="section" id="writing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="title">Writing</h2>
+      <span class="section-num">§ 05</span>
+    </div>
+    <div class="write-grid reveal">
+      <a class="write-card" href="https://www.linkedin.com/posts/ravi-srivastava0114_productmanagement-bankingtechnology-financialservices-share-7467999856184373248-OqrV/" target="_blank" rel="noopener">
+        <span class="tag">Product Management · Banking Tech</span>
+        <p class="line">On building product in regulated, high-stakes banking environments.</p>
+        <span class="go">Read on LinkedIn →</span>
+      </a>
+      <a class="write-card" href="https://www.linkedin.com/posts/ravi-srivastava0114_artificialintelligence-ai-genai-share-7470976751926448129-T4_e/" target="_blank" rel="noopener">
+        <span class="tag">AI · GenAI</span>
+        <p class="line">Thoughts on where agentic AI is actually changing how product gets built.</p>
+        <span class="go">Read on LinkedIn →</span>
+      </a>
+      <a class="write-card" href="https://www.linkedin.com/posts/ravi-srivastava0114_spacex-ipo-investing-share-7470773138172059648-FVA0/" target="_blank" rel="noopener">
+        <span class="tag">Markets · Investing</span>
+        <p class="line">A take on the SpaceX IPO and what it signals for private markets.</p>
+        <span class="go">Read on LinkedIn →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="title">Skills &amp; Certifications</h2>
+      <span class="section-num">§ 06</span>
+    </div>
+    <div class="skill-cols">
+      <div class="skill-block reveal">
+        <h4>Core Competencies</h4>
+        <div class="chip-cloud">
+          <span class="chip">GenAI data transformation</span>
+          <span class="chip">Agentic AI product design</span>
+          <span class="chip">Data product strategy</span>
+          <span class="chip">Banking digital transformation</span>
+          <span class="chip">Payments modernization</span>
+          <span class="chip">Cloud migration &amp; API strategy</span>
+          <span class="chip">Data governance &amp; compliance</span>
+          <span class="chip">ISO20022 &amp; Open Banking</span>
+          <span class="chip">Real-time event platforms</span>
+          <span class="chip">Product roadmaps &amp; value pools</span>
+          <span class="chip">SAFe Agile leadership</span>
+          <span class="chip">Stakeholder &amp; team leadership</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <h4>AI &amp; Agent Tooling</h4>
+        <div class="chip-cloud">
+          <span class="chip">Claude</span>
+          <span class="chip">Gemini-based LLMs</span>
+          <span class="chip">LangGraph</span>
+          <span class="chip">Slingshot</span>
+          <span class="chip">Bodhi Studio</span>
+          <span class="chip">n8n</span>
+          <span class="chip">Zapier</span>
+          <span class="chip">Kafka</span>
+          <span class="chip">Neo4j</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">GCP</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <h4>Certifications</h4>
+        <ul class="cert-list">
+          <li>SAFe Agilist</li>
+          <li>SAFe POPM</li>
+          <li>Thought Machine Vault Fundamentals</li>
+          <li>NSE Certified — Securities &amp; Derivatives Market</li>
+          <li>Quantitative Financial Risk Management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap reveal">
+    <h2>Always open to a conversation about AI product leadership.</h2>
+    <a class="btn btn-solid" href="mailto:ravimechcusat@gmail.com">Email Me →</a>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/ravi-srivastava0114" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/rsri24" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:ravimechcusat@gmail.com">ravimechcusat@gmail.com</a>
+    </div>
+    <div class="foot-meta">RAVI KUMAR SRIVASTAVA · BENGALURU, INDIA · 2026</div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  items.forEach(i=>io.observe(i));
+</script>
+
+</body>
+</html>
